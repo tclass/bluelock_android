@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bluelock</string>
+    <string name="title_activity_main">Bluelock</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="strConnect">connect</string>
+    <string name="strShutdown">shutdown</string>
+    <string name="strBluelock">Bluelock</string>
+    <string name="strContentDesc">something</string>
+    <string name="strLogin">Login</string>
+    <string name="strLogout">logout</string>
+    <string name="strYouAreConnected">You are connected!</string>
+    <string name="strShutdownTime">Shutdown in X min</string>
+    <string name="title_device_list">Paired Devices</string>
+
+</resources>

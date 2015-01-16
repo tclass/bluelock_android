@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="67dp"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="9dp"
+        android:layout_x="17dp"
+        android:layout_y="6dp"
+        android:contentDescription="@string/strContentDesc"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        android:src="@drawable/launcher_icon" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnLogout"
+        android:layout_below="@+id/btnLogout"
+        android:layout_marginTop="6dp"
+        android:layout_x="0dp"
+        android:layout_y="350dp"
+        android:text="@string/strLogin" />
+
+    <Button
+        android:id="@+id/btnShutdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnLogout"
+        android:layout_below="@+id/btnLogin"
+        android:layout_marginTop="7dp"
+        android:layout_x="0dp"
+        android:layout_y="403dp"
+        android:text="@string/strShutdown" />
+
+    <Button
+        android:id="@+id/btnShutdownTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnShutdown"
+        android:layout_marginTop="5dp"
+        android:layout_x="-2dp"
+        android:layout_y="454dp"
+        android:text="@string/strShutdownTime" />
+
+    <TextView
+        android:id="@+id/tvBrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:text="@string/strBluelock"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvConnected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBrand"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp"
+        android:text="@string/strYouAreConnected" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnconnect"
+        android:layout_marginTop="35dp"
+        android:text="@string/strLogout" />
+
+    <Button
+        android:id="@+id/btnconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvBrand"
+        android:layout_below="@+id/tvConnected"
+        android:text="@string/strConnect" />
+
+</RelativeLayout>
