@@ -33,7 +33,7 @@
             android:label="@string/title_activity_main" >
         </activity>
 
-        <receiver android:name="ServiceReciever" >
+        <receiver android:name="ServiceReceiver" >
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.UUID" >
                 </action>

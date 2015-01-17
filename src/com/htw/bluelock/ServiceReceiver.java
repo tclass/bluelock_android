@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 
-public class ServiceReciever extends BroadcastReceiver {
+public class ServiceReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
