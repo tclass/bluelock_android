@@ -32,6 +32,10 @@ public class BluetoothConnection {
 		socket.connect();
 	}
 	
+	public boolean isConnected(){
+		return socket.isConnected();
+	}
+	
 	public String write(String code) {
 		try {
 			if (socket.isConnected()) {

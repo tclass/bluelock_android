@@ -34,8 +34,7 @@ public class DeviceScanActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 
 		// Ensures Bluetooth is available on the device and it is enabled. If
-		// not,
-		// displays a dialog requesting user permission to enable Bluetooth.
+		// not, displays a dialog requesting user permission to enable Bluetooth.
 		if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled()) {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, RESULT_OK);
@@ -50,8 +49,8 @@ public class DeviceScanActivity extends ListActivity {
 				deviceListAdapter.add(device.getName() + "\n" + device.getAddress());
 				device.fetchUuidsWithSdp();
 				ParcelUuid[] uuids = device.getUuids();
-				for(int i=0;i < uuids.length;i++){
-					System.out.print(uuids[i].toString()+"\n");
+				for (int i = 0; i < uuids.length; i++) {
+					System.out.print(uuids[i].toString() + "\n");
 				}
 			}
 		}
@@ -62,11 +61,11 @@ public class DeviceScanActivity extends ListActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Iterator i = pairedDevices.iterator();
+				Iterator<BluetoothDevice> i = pairedDevices.iterator();
 				String clickedDevice = deviceListAdapter.getItem(position);
 				BluetoothDevice actualDevice = null;
 				while (i.hasNext()) {
-					actualDevice = (BluetoothDevice) i.next();
+					actualDevice = i.next();
 
 					if (new String(actualDevice.getName() + "\n" + actualDevice.getAddress()).equals(clickedDevice)) {
 						break;
@@ -75,7 +74,7 @@ public class DeviceScanActivity extends ListActivity {
 				Intent intent = new Intent(DeviceScanActivity.this, BluelockMainScreen.class);
 				if (actualDevice != null) {
 					Bundle b = new Bundle();
-					b.putParcelable("device", (Parcelable)actualDevice);
+					b.putParcelable("device", (Parcelable) actualDevice);
 					intent.putExtra("device", b);
 				}
 				startActivity(intent);
@@ -85,7 +84,6 @@ public class DeviceScanActivity extends ListActivity {
 	}
 
 	private class DeviceArrayAdapter extends ArrayAdapter<String> {
-
 		public DeviceArrayAdapter(Context context, int textViewResourceId, List<String> objects) {
 			super(context, textViewResourceId, objects);
 		}
@@ -94,7 +92,6 @@ public class DeviceScanActivity extends ListActivity {
 		public boolean hasStableIds() {
 			return true;
 		}
-
 	}
 
 }
