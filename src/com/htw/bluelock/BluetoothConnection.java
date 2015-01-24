@@ -9,8 +9,8 @@ import android.bluetooth.BluetoothSocket;
 
 public class BluetoothConnection {
 	
-	public static final String BLUELOCK_UUID = "00001124-0000-1000-8000-00805f9b34fb";
-	public static HashMap<String,String> protocol = new HashMap<String,String>();
+	private static final String BLUELOCK_UUID = "00001124-0000-1000-8000-00805f9b34fb";
+	public static HashMap<String, String> protocol = new HashMap<String, String>();
 	
 	static{
 		protocol = new HashMap<String,String>();
@@ -21,14 +21,26 @@ public class BluetoothConnection {
 	}
 	
 	private BluetoothSocket socket;
-	private BluetoothDevice device;
-	
-	public BluetoothConnection(BluetoothDevice device){
-		this.device = device;
+	private static BluetoothDevice mDevice;
+	private static BluetoothConnection mInstance;
+
+	public static BluetoothConnection getInstance(BluetoothDevice device)
+	{
+		if (mInstance == null)
+			mInstance = new BluetoothConnection();
+
+		mDevice = device;
+
+		return mInstance;
 	}
 	
-	public void connect() throws IOException {
-		socket = device.createInsecureRfcommSocketToServiceRecord(UUID.fromString(BluetoothConnection.BLUELOCK_UUID));
+	private BluetoothConnection()
+	{
+	}
+	
+	private void connect() throws IOException
+	{
+		socket = mDevice.createInsecureRfcommSocketToServiceRecord(UUID.fromString(BluetoothConnection.BLUELOCK_UUID));
 		socket.connect();
 	}
 	
@@ -36,7 +48,10 @@ public class BluetoothConnection {
 		return socket.isConnected();
 	}
 	
-	public String write(String code) {
+	public String write(String code) throws IOException
+	{
+		connect();
+
 		try {
 			if (socket.isConnected()) {
 				socket.getOutputStream().write(code.getBytes());

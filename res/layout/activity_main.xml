@@ -29,6 +29,7 @@
         android:layout_marginTop="6dp"
         android:layout_x="0dp"
         android:layout_y="350dp"
+        android:onClick="clickConnect"
         android:text="@string/strLogin" />
 
     <Button
@@ -40,6 +41,7 @@
         android:layout_marginTop="7dp"
         android:layout_x="0dp"
         android:layout_y="403dp"
+        android:onClick="clickShutdown"
         android:text="@string/strShutdown" />
 
     <Button
@@ -79,6 +81,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/btnconnect"
         android:layout_marginTop="35dp"
+        android:onClick="clickLogout"
         android:text="@string/strLogout" />
 
     <Button
@@ -87,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvBrand"
         android:layout_below="@+id/tvConnected"
+        android:onClick="clickDisconnect"
         android:text="@string/strConnect" />
 
 </RelativeLayout>
