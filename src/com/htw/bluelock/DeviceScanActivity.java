@@ -50,7 +50,7 @@ public class DeviceScanActivity extends ListActivity
 					if (devices.get(pos).endsWith(d.getAddress()))
 					{
 						Intent returnIntent = new Intent();
-						BluetoothConnection b = BluetoothConnection.getInstance(d);
+						BluetoothConnection.getInstance(d);
 						setResult(Activity.RESULT_OK, returnIntent);
 						finish();
 						return;

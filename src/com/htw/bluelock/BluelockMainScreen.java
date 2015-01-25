@@ -1,6 +1,7 @@
 package com.htw.bluelock;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,15 @@ public class BluelockMainScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+       
+		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		bluetoothAdapter.getBondedDevices();
 		disable();
+	}
+	
+	protected void onResume(Bundle saveInstanceState) {
+		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		bluetoothAdapter.getBondedDevices();
 	}
 
 	public void clickConnect(View v) {
