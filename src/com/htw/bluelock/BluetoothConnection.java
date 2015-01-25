@@ -8,60 +8,60 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 
 public class BluetoothConnection {
-	
+
 	private static final String BLUELOCK_UUID = "00001124-0000-1000-8000-00805f9b34fb";
 	public static HashMap<String, String> protocol = new HashMap<String, String>();
-	
-	static{
-		protocol = new HashMap<String,String>();
+
+	static {
+		protocol = new HashMap<String, String>();
+		protocol.put("CONNECTION_TEST", "0");
 		protocol.put("LOCK", "1");
 		protocol.put("UNLOCK", "2");
 		protocol.put("SHUTDOWN", "3");
-		protocol.put("SHUTDOWN_TIME", "4;23");
 	}
-	
+
 	private BluetoothSocket socket;
 	private static BluetoothDevice mDevice;
 	private static BluetoothConnection mInstance;
 
-	public static BluetoothConnection getInstance(BluetoothDevice device)
-	{
-		if (mInstance == null)
+	public static BluetoothConnection getInstance(BluetoothDevice device) {
+		if (mInstance == null && device != null) {
 			mInstance = new BluetoothConnection();
-
-		mDevice = device;
-
+			mDevice = device;
+		}
 		return mInstance;
 	}
-	
-	private BluetoothConnection()
-	{
+	public static void killInstance(){
+		mInstance = null;
 	}
-	
-	private void connect() throws IOException
-	{
-		socket = mDevice.createInsecureRfcommSocketToServiceRecord(UUID.fromString(BluetoothConnection.BLUELOCK_UUID));
-		socket.connect();
+
+	private BluetoothConnection() {
 	}
-	
-	public boolean isConnected(){
+
+	private void connect() throws IOException {
+		if (mDevice != null) {
+			socket = mDevice.createInsecureRfcommSocketToServiceRecord(UUID.fromString(BluetoothConnection.BLUELOCK_UUID));
+			socket.connect();
+		}
+	}
+
+	public boolean isConnected() {
 		return socket.isConnected();
 	}
-	
-	public String write(String code) throws IOException
-	{
-		connect();
 
+	public String write(String code) throws IOException {
 		try {
-			if (socket.isConnected()) {
-				socket.getOutputStream().write(code.getBytes());
-			} else {
-				socket.connect();
-				socket.getOutputStream().write(code.getBytes());
-			}
+			if (socket == null)
+				connect();
+				
+			socket.getOutputStream().write(code.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "Couldn't send command to device, try to reconnect!";
+			if (socket != null) {
+				socket.getOutputStream().write(code.getBytes());
+				connect();
+				return "after recoonect, send command to device";
+			}
 		}
 		return "Send command to device";
 	}

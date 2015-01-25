@@ -9,51 +9,14 @@
         android:id="@+id/ivLogo"
         android:layout_width="67dp"
         android:layout_height="71dp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="9dp"
-        android:layout_x="17dp"
-        android:layout_y="6dp"
         android:contentDescription="@string/strContentDesc"
         android:cropToPadding="false"
         android:scaleType="fitXY"
         android:src="@drawable/bluelock_logo" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnLogout"
-        android:layout_below="@+id/btnLogout"
-        android:layout_marginTop="6dp"
-        android:layout_x="0dp"
-        android:layout_y="350dp"
-        android:onClick="clickConnect"
-        android:text="@string/strLogin" />
-
-    <Button
-        android:id="@+id/btnShutdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnLogout"
-        android:layout_below="@+id/btnLogin"
-        android:layout_marginTop="7dp"
-        android:layout_x="0dp"
-        android:layout_y="403dp"
-        android:onClick="clickShutdown"
-        android:text="@string/strShutdown" />
-
-    <Button
-        android:id="@+id/btnShutdownTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btnShutdown"
-        android:layout_marginTop="5dp"
-        android:layout_x="-2dp"
-        android:layout_y="454dp"
-        android:text="@string/strShutdownTime" />
 
     <TextView
         android:id="@+id/tvBrand"
@@ -65,32 +28,55 @@
         android:text="@string/strBluelock"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/tvConnected"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnShutdown"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvBrand"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp"
-        android:text="@string/strYouAreConnected" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignStart="@+id/btnLogout"
+        android:onClick="clickShutdown"
+        android:text="@string/strShutdown" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnShutdown"
+        android:layout_alignParentLeft="true"
+        android:layout_alignStart="@+id/btnLogout"
+        android:onClick="clickLogin"
+        android:text="@string/strLogin" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btnLogin"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/btnconnect"
-        android:layout_marginTop="35dp"
+        android:layout_alignParentStart="true"
         android:onClick="clickLogout"
         android:text="@string/strLogout" />
 
     <Button
         android:id="@+id/btnconnect"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignStart="@+id/tvBrand"
+        android:layout_below="@+id/ivLogo"
+        android:layout_marginTop="84dp"
+        android:onClick="clickConnect"
+        android:text="@string/strConnect" />
+
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvBrand"
-        android:layout_below="@+id/tvConnected"
-        android:onClick="clickDisconnect"
-        android:text="@string/strConnect" />
+        android:layout_above="@+id/btnLogout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="Commands:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
